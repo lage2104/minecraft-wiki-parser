@@ -13,3 +13,6 @@ def parseInfoBox(data, soup):
         data["stack_size"] = int(re.findall(r'\d+', value)[0])
       else:
         data["stack_size"] = 1
+
+def parseItemType(data, soup):
+  data["item_type"] = "Not set"
