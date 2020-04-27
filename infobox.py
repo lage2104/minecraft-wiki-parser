@@ -1,14 +1,10 @@
-from bs4 import BeautifulSoup
-import requests
 import re
 
 url = "https://minecraft.gamepedia.com/"
 
-def parseInfoBox(url_name):
-  data = { "name": url_name.replace("_", " "), "url_name": url_name, "stack_size": 1 }
-  response = requests.get(url + url_name)
-  html = response.text
-  soup = BeautifulSoup(html,'html.parser')
+def parseInfoBox(soup):
+  data = { "stack_size": 1 }
+  
   infobox_table = soup.find("table", {"class": "infobox-rows"})
   
 
