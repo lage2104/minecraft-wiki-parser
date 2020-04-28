@@ -11,8 +11,6 @@ def parseInfoBox(data, soup):
     if key == "Stackable":
       if "Yes" in value:
         data["stack_size"] = int(re.findall(r'\d+', value)[0])
-      else:
-        data["stack_size"] = 1
 
 def parseItemType(data, soup):
   data["item_type"] = "Not set"

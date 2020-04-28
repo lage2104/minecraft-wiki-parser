@@ -32,7 +32,7 @@ for block_url in block_urls:
 
 # For items its the same procedure :D
 for item_url in item_urls:
-  soup = fetchInfoPage(block_url)
+  soup = fetchInfoPage(item_url)
   item_data = { "name": item_url.replace("_", " ") }
   infopage.parseInfoBox(item_data, soup)
   data.append(item_data)
