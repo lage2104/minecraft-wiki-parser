@@ -76,7 +76,7 @@ def download_wiki():
   blocks = blocknames.parseBlockNames()
   end = time.time()
   logger.info("time to get block list: {} seconds".format(round(end-start,2)))
-
+  logger.info("number of blocks: {}".format(len(blocks)))
 
   logger.info("retrieve blocks from minecraft wiki...")
   #write urls in list
@@ -98,6 +98,7 @@ def download_wiki():
   items = itemnames.parseItemNames()
   end = time.time()
   logger.info("time to get item list: {} seconds".format(round(end-start,2)))
+  logger.info("number of items: {}".format(len(items)))
 
   #write urls in list
   item_urls = []
