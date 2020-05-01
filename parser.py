@@ -89,9 +89,6 @@ def download_wiki():
   end = time.time()
   logger.info("time to get blocks: {} seconds".format(round(end-start,2)))
 
-  #need to sleep, because of stupid retry error ...
-  time.sleep(3)
-
   logger.info("retrieve item list from minecraft wiki...")
   #retrieve all item names and urls
   start = time.time()
@@ -112,8 +109,6 @@ def download_wiki():
 
   #add html to block dict
   for idx,block_response in enumerate(block_responses):
-    print(type(block_response))
-    print(block_response.__class__.__name__)
     blocks[idx]['html'] = block_response.text
 
   #write blocks to json
@@ -133,5 +128,5 @@ def download_wiki():
 
 
 if __name__ == "__main__":
-    main()
-    #download_wiki()
+    #main()
+    download_wiki()

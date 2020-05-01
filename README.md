@@ -6,3 +6,7 @@ pip install beautifulsoup4
 ```
 pip install requests
 ```
+
+3. lxml für Python installieren
+pip install lxml
+

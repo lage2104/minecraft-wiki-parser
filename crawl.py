@@ -1,4 +1,9 @@
 import requests
+from requests.adapters import HTTPAdapter
+from urllib3.util.retry import Retry
+
+import random
+
 from queue import Queue
 from threading import Thread 
 
@@ -7,7 +12,12 @@ def crawl(q , result):
         # fetch work from queue
         work = q.get()
         try:
-            response = requests.get(work[1])
+            session = requests.Session()
+            retry = Retry(connect=10, backoff_factor=random.randint(5,10))
+            adapter = HTTPAdapter(max_retries=retry)
+            session.mount('http://', adapter)
+            session.mount('https://', adapter)
+            response = session.get(work[1])
             result[work[0]] = response
         except:
             result[work[0]] = {}
