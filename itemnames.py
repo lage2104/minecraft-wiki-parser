@@ -22,16 +22,16 @@ def parseItemNames():
   item_list = soup.find(id = "Items_that_create_blocks,_fluids_or_entities").find_next("ul").findAll("li")
   for item_li in item_list:
     itemname = item_li.find("a").attrs["href"].replace("/", "")
-    data.append({"name":itemname.replace("_", " "),"url":baseurl+itemname})
+    data.append({"id": itemname.replace('(','').replace(')','').lower(), "name":itemname.replace("_", " "),"url":baseurl+itemname})
   
   item_list = soup.find(id = "Items_with_use_in_the_world").find_next("ul").findAll("li")
   for item_li in item_list:
     itemname = item_li.find("a").attrs["href"].replace("/", "")
-    data.append({"name":itemname.replace("_", " "),"url":baseurl+itemname})
+    data.append({"id": itemname.replace("(", "").replace(")", "").lower(), "name":itemname.replace("_", " "),"url":baseurl+itemname})
 
   item_list = soup.find(id = "Items_with_indirect_use_in_the_world").find_next("ul").findAll("li")
   for item_li in item_list:
     itemname = item_li.find("a").attrs["href"].replace("/", "")
-    data.append({"name":itemname.replace("_", " "),"url":baseurl+itemname})
+    data.append({"id": itemname.replace("(", "").replace(")", "").lower(), "name":itemname.replace("_", " "),"url":baseurl+itemname})
 
   return data

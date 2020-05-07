@@ -126,7 +126,7 @@ def parseReceipe(data):
         if itemDescription is None:
           itemname=""
         else:
-          itemname = itemDescription['title']
+          itemname = itemDescription['title'].replace(' ','_').lower()
 
         slotnum=rownum*3+colnum+1
         receipe['ingredients'].append({"slot":slotnum,

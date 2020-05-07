@@ -2,6 +2,7 @@ import requests
 import blocknames
 import itemnames
 import infopage
+import ontology
 import crawl
 import time
 
@@ -10,8 +11,6 @@ import json
 import logging
 
 import sys
-
-
 
 base_url = "https://minecraft.gamepedia.com/"
 
@@ -147,9 +146,5 @@ def main():
 
 if __name__ == "__main__":
     main()
-    #items = None
-    #with open('items.json') as file:
-    #  items = json.load(file)
-    #item = infopage.parseInfoBox(items[0])
-    #item = infopage.parseReceipe(item)
+
     pass

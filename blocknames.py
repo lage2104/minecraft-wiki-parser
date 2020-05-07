@@ -22,8 +22,8 @@ def parseBlockNames():
   for block_li in block_list:
     if len(block_li.findAll("a")) == 1:
       blockname = block_li.find("a").attrs["href"].replace("/", "")
-      data.append({"name":blockname.replace("_", " "),"url":baseurl+blockname})
+      data.append({"id": blockname.replace("(", "").replace(")", "").lower(), "name":blockname.replace("_", " "),"url":baseurl+blockname})
     else:
       blockname = block_li.findAll("a")[1].attrs["href"].replace("/", "")
-      data.append({"name":blockname.replace("_", " "),"url":baseurl+blockname})
+      data.append({"id": blockname.replace("(", "").replace(")", "").lower(), "name":blockname.replace("_", " "),"url":baseurl+blockname})
   return data
