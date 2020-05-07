@@ -1,4 +1,3 @@
-from bs4 import BeautifulSoup
 import requests
 import blocknames
 import itemnames
@@ -9,6 +8,8 @@ import time
 import json
 
 import logging
+
+import sys
 
 
 
@@ -25,50 +26,11 @@ formatter = logging.Formatter('%(asctime)15s - %(name)s - %(levelname)s - %(mess
 ch.setFormatter(formatter)
 logger.addHandler(ch)
 
-
-def main():
-
-  # Retrive all block and item names (ex. Lava_Bucket)
-  blocks = blocknames.parseBlockNames()
-  block_urls = []
-  for block in blocks:
-    block_urls.append(block['url'])
-  block_responses = crawl.fetch_url_contents(block_urls)
-
-  time.sleep(2)
-  items = itemnames.parseItemNames()
-  item_urls = []
-  for item in items:
-    item_urls.append(item['url'])
-  item_responses = crawl.fetch_url_contents(item_urls)
-  data = []
-
-  # Here everything happens
-  for idx, block in enumerate(blocks):
-    soup = BeautifulSoup(block_responses[idx].text,'lxml')
-    # parseInfoBox appends information to the block_data dict.
-    block = infopage.parseInfoBox(block, soup)
-    # add it to the final array
-
-    receipe = infopage.parseReceipe(block,soup)
-    block['receipe'] = receipe
-    data.append(block)
-    print(block)
-
-  # For items its the same procedure :D
-  for idx, item in enumerate(items):
-    soup = BeautifulSoup(item_responses[idx].text,'lxml')
-    item = infopage.parseInfoBox(item, soup)
-
-    receipe = infopage.parseReceipe(item,soup)
-    item['receipe'] = receipe
-
-    data.append(item)
-    print(item)
-
-  print(data)
-
 def download_wiki():
+  """
+  Downloads items and block from minecraft wiki into items.json and blocks.json
+  :return:
+  """
   logger.info("retrieve block list from minecraft wiki...")
 
   start = time.time()
@@ -126,7 +88,68 @@ def download_wiki():
     json.dump(items, fp)
   pass
 
+def main():
+  data = []
+  if len(sys.argv) == 2:
+    if sys.argv[1] == '--init':
+      download_wiki()
+
+  logger.info("Reading blocks from blocks.json file")
+  blocks = None
+  with open('blocks.json') as file:
+    blocks = json.load(file)
+
+  logger.info("Reading items from items.json file")
+  items = None
+  with open('items.json') as file:
+    items = json.load(file)
+
+  blockslen = len(blocks)
+  logger.info("Start to parse {} blocks".format(blockslen))
+  # Here everything happens
+  start = time.time()
+  
+  for idx,block in enumerate(blocks):
+    if idx % 20 == 0:
+      logger.info("Progress: {}/{}".format(idx,blockslen))
+      end = time.time()
+      logger.info("Elapsed time: {} seconds".format(round(end-start,2)))
+    # parseInfoBox appends information to the block_data dict.
+    block = infopage.parseInfoBox(block)
+
+    receipe = infopage.parseReceipe(block)
+    block['receipe'] = receipe
+    if 'html' in block:
+      block.pop('html')
+
+    # add it to the array
+    data.append(block)
+
+  itemlen=len(items)
+  # For items its the same procedure :D
+  for idx,item in enumerate(items):
+    if idx % 20 == 0:
+      logger.info("Progress: {}/{}".format(idx,itemlen))
+      end = time.time()
+      logger.info("Elapsed time: {} seconds".format(round(end-start,2)))
+    item = infopage.parseInfoBox(item)
+
+    receipe = infopage.parseReceipe(item)
+    item['receipe'] = receipe
+    if 'html' in item:
+      item.pop('html')
+
+    # add it to the array
+    data.append(item)
+
+  with open('data.json', 'w') as fp:
+    json.dump(data, fp)
 
 if __name__ == "__main__":
-    #main()
-    download_wiki()
+    main()
+    #items = None
+    #with open('items.json') as file:
+    #  items = json.load(file)
+    #item = infopage.parseInfoBox(items[0])
+    #item = infopage.parseReceipe(item)
+    pass

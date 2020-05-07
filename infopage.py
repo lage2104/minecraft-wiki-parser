@@ -1,8 +1,16 @@
 import re
+from bs4 import BeautifulSoup, SoupStrainer
 
 url = "https://minecraft.gamepedia.com/"
+def parseInfoBox(data):
+  """
+  Parses info box element on a block/item page on mincecraft wiki
+  :param data: dict element for item or block
+  :return: dict with enriched data
+  """
+  strainer = SoupStrainer("table", {"class": "infobox-rows"})
+  soup = BeautifulSoup(data['html'],'lxml',parse_only=strainer)
 
-def parseInfoBox(data, soup):
   data["stack_size"] = 1
   infobox_table = soup.find("table", {"class": "infobox-rows"})
   if infobox_table == None:
@@ -18,36 +26,38 @@ def parseInfoBox(data, soup):
 def parseItemType(data, soup):
   data["item_type"] = "Not set"
 
-def parseReceipe(block_data,soup):
-  #index for mutiple output
-  index = -1
-  receipe = {}
-
-  #empty list
-  receipe['ingredients'] = []
-
-  crafting_table = soup.find("table",{"data-description":"Crafting recipes"}) 
-
-  #check if there is at least one receipe on the site
-  receipe_outputs = crafting_table.findAll("span",{"class":"mcui-output"})
-  
-  if receipe_outputs == None:
-    return
-  if len(receipe_outputs) == 0:
-    return
-  print(len(receipe_outputs))
-  receipe_output = receipe_outputs[0]
-
+def parse_shape(soup):
+  """
+  parses shape information
+  :param soup: whole table
+  :return: shapeinformation
+  """
   shapeless = soup.find("span",{"class":"mcui-shapeless"})
-  if shapeless !=None:
-    receipe['type'] = 'shapeless'
+  if shapeless is not None:
+    return 'shapeless'
   else:
-    receipe['type'] = 'shapefull'
+    return 'shapefull'
 
-  
+def parse_output_amount(soup):
+  """
+  parses output amount
+  :param soup: mcui-output
+  :return: output amount
+  """
+  output_stacksize = soup.find("span",{"class":"invslot-stacksize"})
+  if output_stacksize is None:
+    return 1
+  else:
+    return int(output_stacksize.text)
 
-  items = receipe_output.findAll("span",{"class":"invslot-item"})
-  for idx, item in enumerate(items):
+def get_output_index(objects,name):
+  """
+  parse index of item
+  :param objects: mcui-output ==> invslot-item
+  :param name: name block/item
+  :return: index
+  """
+  for idx, item in enumerate(objects):
     itemDescription = item.find("a")
     itemname=""
     if itemDescription == None:
@@ -55,13 +65,49 @@ def parseReceipe(block_data,soup):
     if itemDescription == None:
       itemDescription = item.find("img")
     itemname = itemDescription['title']
-    if itemname == block_data['name']:
-      index = idx
-      break
+    if itemname == name:
+      return idx
+  return -1
+
+def parseReceipe(data):
+  """
+  parses receipe on a block/item page on minecraft wiki
+  :param data: dict element for item/block
+  :return: receipe
+  """
+  strainer = SoupStrainer("table",{"data-description":"Crafting recipes"})
+  soup = BeautifulSoup(data['html'],'lxml',parse_only=strainer)
+
+  #index for mutiple output
+  receipe = {}
+
+  crafting_table = soup.find("table",{"data-description":"Crafting recipes"}) 
+  if crafting_table == None:
+    return
+
+  receipe_outputs = crafting_table.findAll("span",{"class":"mcui-output"})
+  #check if there is at least one receipe on the site 
+  if receipe_outputs == None:
+    return
+  if len(receipe_outputs) == 0:
+    return
+
+  #we only parse one object
+  receipe_output = receipe_outputs[0]
+
+  receipe['type'] = parse_shape(soup)
+
+  receipe['output_amount'] = parse_output_amount(receipe_output)
   
+  items = receipe_output.findAll("span",{"class":"invslot-item"})
+  
+  index = get_output_index(items,data['name'])
   if index == -1:
     return 
   
+  #empty list
+  receipe['ingredients'] = []
+
   receipe_input = soup.find("span",{"class":"mcui-input"})
   rows = receipe_input.findAll("span",{"class":"mcui-row"})
   for rownum, row in enumerate(rows):
@@ -70,25 +116,19 @@ def parseReceipe(block_data,soup):
       items = col.findAll("span",{"class":"invslot-item"})
       if len(items) > 1:
         item = items[(index % len(items))]
-        itemDescription = item.find("a")
-        itemname=""
-        if itemDescription == None:
-          itemDescription = item.find("span")
-        
-        itemname = itemDescription['title']
-
-        slotnum=rownum*3+colnum+1
-        receipe['ingredients'].append({"slot":slotnum,
-        "item":itemname})
       elif len(items) == 1:
         item = items[0]
+      if len(items) > 0:
+        itemDescription = item.find("a")
         itemname=""
-        if itemDescription == None:
+        if itemDescription is None:
           itemDescription = item.find("span")
-        
-        itemname = itemDescription['title']
+        if itemDescription is None:
+          itemname=""
+        else:
+          itemname = itemDescription['title']
+
         slotnum=rownum*3+colnum+1
         receipe['ingredients'].append({"slot":slotnum,
         "item":itemname})
-
   return receipe
