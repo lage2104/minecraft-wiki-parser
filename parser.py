@@ -114,7 +114,6 @@ def main():
       end = time.time()
       logger.info("Elapsed time: {} seconds".format(round(end-start,2)))
     # parseInfoBox appends information to the block_data dict.
-    block['item_type'] = "Placeable"
     block = infopage.parseInfoBox(block)
     block = infopage.parseItemDescription(block)
 
@@ -135,7 +134,6 @@ def main():
       logger.info("Elapsed time: {} seconds".format(round(end-start,2)))
     item = infopage.parseInfoBox(item)
     item = infopage.parseItemDescription(item)
-    item = infopage.parseItemType(data)
 
     receipe = infopage.parseReceipe(item)
     item['receipe'] = receipe

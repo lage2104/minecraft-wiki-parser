@@ -30,11 +30,6 @@ def parseItemDescription(data):
   data["description"] = desc.replace("\n", " ").replace("\"", "").encode('ascii', 'ignore').decode("utf-8")
   return data
 
-def parseItemType(data):
-  # Only for items, blocks are always "placeable"
-  data["item_type"] = "Not set"
-
-
 def parse_shape(soup):
   """
   parses shape information

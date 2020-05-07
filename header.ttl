@@ -24,7 +24,3 @@ mc:slot             rdf:type            rdfs:Propery ;
 mc:Item             rdf:type            rdfs:Class .
 mc:CollectableItem  rdf:type            rdfs:Class ;
                     rdfs:subClassOf     mc:Item .
-mc:ItemType         rdf:type            rdfs:Class .
-mc:Placeable        rdf:type            mc:ItemType .
-mc:Useable          rdf:type            mc:ItemType .
-mc:Consumable       rdf:type            mc:ItemType .
