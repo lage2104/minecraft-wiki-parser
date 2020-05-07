@@ -24,6 +24,7 @@ def generateOntology(fileName):
     element_triple = []
     
     label = "mc:{id}\trdf:label\t\"{name}\"^^xsd:string .".format(id=element['id'],name=element['name'])
+    comment = "mc:{id}\trdf:comment\t\"{description}\"^^xsd:string .".format(id=element['id'],description=element['description'])
     stack_size = "mc:{id}\tmc:stackSize\t\"{size}\"^^xsd:positiveInteger .".format(id=element['id'],size=element['stack_size'])    
     url = "mc:{id}\tmc:wikiUrl\t\"{url}\"^^xsd:string .".format(id=element['id'],url=element['url'])
 
@@ -35,6 +36,7 @@ def generateOntology(fileName):
       element_triple.append(rdf_type)
       
     element_triple.append(label)
+    element_triple.append(comment)
     element_triple.append(url)
     element_triple.append(stack_size)
 

@@ -23,8 +23,17 @@ def parseInfoBox(data):
         data["stack_size"] = int(re.findall(r'\d+', value)[0])
   return data
 
-def parseItemType(data, soup):
+def parseItemDescription(data):
+  strainer = SoupStrainer("div", {"class": "mw-parser-output"})
+  soup = BeautifulSoup(data['html'],'lxml',parse_only=strainer)
+  desc = soup.find("div", {"class": "mw-parser-output"}).find("p", recursive=False).getText().strip()
+  data["description"] = desc.replace("\n", " ").replace("\"", "").encode('ascii', 'ignore').decode("utf-8")
+  return data
+
+def parseItemType(data):
+  # Only for items, blocks are always "placeable"
   data["item_type"] = "Not set"
+
 
 def parse_shape(soup):
   """
