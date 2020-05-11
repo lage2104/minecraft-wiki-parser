@@ -42,10 +42,10 @@ def generateOntology(fileName):
 
     if element ['receipe'] is not None:
       if element ['receipe']['type'] == "shapeless":
-        shape = "mc:{id}\trdf:shapelessRecipe\t[".format(id=element['id'])
+        shape = "mc:{id}\tmc:shapelessRecipe\t[".format(id=element['id'])
         element_triple.append(shape)
       else:
-        shape = "mc:{id}\trdf:shapefulRecipe\t[".format(id=element['id'])
+        shape = "mc:{id}\tmc:shapefulRecipe\t[".format(id=element['id'])
         element_triple.append(shape)
       
       element_triple.append("\t\trdf:type\trdf:Seq ;")

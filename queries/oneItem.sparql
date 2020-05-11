@@ -1,8 +1,9 @@
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX mc:  <http://awesom-minecraft-item-resolver.mc>
 
-SELECT ?item ?name ?stackSize ?description
+SELECT ?name ?stackSize ?description 
 WHERE {
+  BIND(mc:lantern AS ?item)
   {?item rdf:label ?name} . 
   {?item mc:stackSize ?stackSize} . 
   {?item rdf:comment ?description} . 

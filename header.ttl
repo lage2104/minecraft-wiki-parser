@@ -6,9 +6,9 @@
 mc:recipe           rdf:type            rdfs:Property ;
                     rdfs:domain         mc:CraftableItem .
 mc:shapelessRecipe  rdf:type            rdfs:Property ; 
-                    rdf:subPropertyOf   mc:recipe .
+                    rdfs:subPropertyOf  mc:recipe .
 mc:shapefulRecipe   rdf:type            rdfs:Property ; 
-                    rdf:subPropertyOf   mc:recipe .
+                    rdfs:subPropertyOf  mc:recipe .
 mc:recipeItem       rdf:type            rdfs:Property ;
                     rdfs:range          mc:Item .
 mc:stackSize        rdf:type            rdfs:Property ;
@@ -19,7 +19,7 @@ mc:outputAmount     rdf:type            rdfs:Property ;
 mc:wikiUrl          rdf:type            rdfs:Property ;
                     rdfs:domain         mc:Item ;
                     rdfs:range          xsd:anyURI .
-mc:slot             rdf:type            rdfs:Propery ;
+mc:slot             rdf:type            rdfs:Property ;
                     rdfs:range          xsd:positiveInteger .
 mc:Item             rdf:type            rdfs:Class .
 mc:CollectableItem  rdf:type            rdfs:Class ;
