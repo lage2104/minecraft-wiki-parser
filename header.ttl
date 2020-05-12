@@ -22,5 +22,7 @@ mc:wikiUrl          rdf:type            rdfs:Property ;
 mc:slot             rdf:type            rdfs:Property ;
                     rdfs:range          xsd:positiveInteger .
 mc:Item             rdf:type            rdfs:Class .
+mc:CraftableItem    rdf:type            rdfs:Class ;
+                    rdfs:subClassOf     mc:Item .
 mc:CollectableItem  rdf:type            rdfs:Class ;
                     rdfs:subClassOf     mc:Item .

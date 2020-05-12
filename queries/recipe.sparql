@@ -7,23 +7,21 @@ WHERE {
   BIND(mc:lantern AS ?item) .
   ?item rdf:label ?name .  
   ?item mc:stackSize ?stackSize .
-  ?item rdf:comment ?description 
-  { 
-    ?recipeType rdfs:subPropertyOf mc:recipe . 
-    ?item ?recipeType _:recipe .
-    _:recipe mc:outputAmount ?outputAmount . 
-    _:recipe rdf:li _:element .
-    _:element mc:slot ?slot .
-    _:element mc:receipeItem ?element .
-    ?element rdf:label ?ingredient .
-    ?element rdf:comment ?ingredientDescription
-  }
+  ?item rdf:comment ?description .
+  
+  ?recipeType rdfs:subPropertyOf mc:recipe . 
+  ?item ?recipeType _:recipe .
+  _:recipe mc:outputAmount ?outputAmount . 
+  _:recipe rdf:li _:element .
+  _:element mc:slot ?slot .
+  _:element mc:receipeItem ?element .
+  ?element rdf:label ?ingredient .
+  ?element rdf:comment ?ingredientDescription
 }
 ORDER BY ?slot
 
 
 # Getrennte Abfrage
-
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX mc:  <http://awesom-minecraft-item-resolver.mc>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>

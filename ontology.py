@@ -29,7 +29,7 @@ def generateOntology(fileName):
     url = "mc:{id}\tmc:wikiUrl\t\"{url}\"^^xsd:string .".format(id=element['id'],url=element['url'])
 
     if element ['receipe'] is None:
-      rdf_type = "mc:{id}\trdf:type\tmc:Item .".format(id=element['id'])
+      rdf_type = "mc:{id}\trdf:type\tmc:CollectableItem .".format(id=element['id'])
       element_triple.append(rdf_type)
     else:
       rdf_type = "mc:{id}\trdf:type\tmc:CraftableItem .".format(id=element['id'])
