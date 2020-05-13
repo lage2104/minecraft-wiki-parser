@@ -1,3 +1,8 @@
 iron_ingot
 gold_ingot
 coal
+redstone_dust
+lapis_lazuli
+diamond
+emerald
+melon_slice

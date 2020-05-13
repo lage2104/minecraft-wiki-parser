@@ -4,6 +4,6 @@ PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 
 SELECT  ?ingriedient
 WHERE {
-  mc:shulker_box ((mc:shapelessRecipe | mc:shapefulRecipe)/rdf:li/mc:receipeItem)+ ?ingriedient .
+  mc:bookshelf ((mc:shapelessRecipe | mc:shapefulRecipe | mc:smeltingRecipe)/rdf:li/mc:receipeItem)+ ?ingriedient .
   ?ingriedient rdf:type mc:CollectableItem .
 }

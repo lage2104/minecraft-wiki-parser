@@ -1,0 +1,19 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX mc:  <http://awesom-minecraft-item-resolver.mc>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+SELECT ?slot ?name ?description 
+WHERE {
+  BIND(mc:redstone_comparator AS ?item) .
+  { 
+    ?recipeType rdfs:subPropertyOf mc:recipe . 
+    ?item ?recipeType _:recipe .
+    _:recipe rdf:li _:element .
+    _:element mc:receipeItem ?element .
+    _:element mc:slot ?slot .
+    ?element rdf:label ?name .  
+    ?element rdf:comment ?description .
+    ?element rdf:label ?ingredient
+  }
+}
+ORDER BY ?slot

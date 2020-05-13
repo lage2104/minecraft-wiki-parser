@@ -1,0 +1,15 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX mc:  <http://awesom-minecraft-item-resolver.mc>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+SELECT ?name ?stackSize ?description ?outputAmount ?recipeType
+WHERE {
+  BIND(mc:redstone_comparator AS ?item) .
+  ?item rdf:label ?name .  
+  ?item mc:stackSize ?stackSize .
+  ?item rdf:comment ?description .
+  ?item rdf:label ?ingredient .
+  ?recipeType rdfs:subPropertyOf mc:recipe . 
+  ?item ?recipeType _:recipe .
+  _:recipe mc:outputAmount ?outputAmount
+}

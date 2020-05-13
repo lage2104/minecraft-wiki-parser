@@ -2,8 +2,11 @@ PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX mc:  <http://awesom-minecraft-item-resolver.mc>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 
-SELECT  (COUNT(DISTINCT ?craftable) as ?count) 
+SELECT ?item ?name ?wikiUrl
 WHERE {
-  BIND(mc:oak_log AS ?item) .
-  ?craftable ((mc:shapelessRecipe | mc:shapefulRecipe)/rdf:li/mc:receipeItem) ?item .
+  ?item rdf:label ?name . 
+  ?item rdf:type ?itemType . 
+  ?item mc:wikiUrl ?wikiUrl .
+  ?itemType rdfs:subClassOf mc:Item
 }
+ORDER BY ?item

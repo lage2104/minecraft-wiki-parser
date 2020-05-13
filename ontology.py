@@ -72,6 +72,11 @@ def generateOntology(fileName):
     
     file.write("\n\n")
 
+    with open("additional.ttl", "r") as header:
+      file.writelines(header.readlines())
+    
+    file.write("\n\n")
+
     texts = []
     for element_triple in output:
       texts.append("\n".join(element_triple))

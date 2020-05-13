@@ -1,0 +1,29 @@
+mc:iron_ingot	mc:realWorldObject dbr:Cast_iron .
+mc:iron_ingot	mc:smeltingRecipe	[
+		rdf:type	rdf:Seq ;
+		mc:outputAmount	"1"^^xsd:positiveInteger ;
+		rdf:li
+		[
+			mc:receipeItem	mc:iron_ore ;
+			mc:slot	"1"^^xsd:positiveInteger
+		]
+	] .
+
+mc:gold_ingot mc:realWorldObject dbr:Gold_bar .
+mc:gold_ingot	mc:smeltingRecipe	[
+		rdf:type	rdf:Seq ;
+		mc:outputAmount	"1"^^xsd:positiveInteger ;
+		rdf:li
+		[
+			mc:receipeItem	mc:gold_ore ;
+			mc:slot	"1"^^xsd:positiveInteger
+		]
+	] .
+
+mc:diamond mc:realWorldObject dbr:Diamond .
+mc:oak_log mc:realWorldObject dbr:Oak .
+mc:cauldron mc:realWorldObject  dbr:Cauldron .
+mc:lapis_lazuli mc:realWorldObject  dbr:Lapis_lazuli .
+mc:dirt mc:realWorldObject  dbr:Dirt .
+mc:map  mc:realWorldObject  dbr:Map .
+mc:minecart mc:realWorldObject  dbr:Minecart .

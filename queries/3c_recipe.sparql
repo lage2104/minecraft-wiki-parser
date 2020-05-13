@@ -6,7 +6,7 @@ SELECT * WHERE {
   {
     SELECT ?name ?stackSize ?description ?outputAmount ?recipeType 
     {
-      BIND(mc:lantern AS ?item) . 
+      BIND(mc:redstone_comparator AS ?item) . 
       ?item rdf:label ?name .  
       ?item mc:stackSize ?stackSize .
       ?item rdf:comment ?description .
@@ -19,7 +19,7 @@ SELECT * WHERE {
   } UNION {
 	SELECT ?name ?stackSize ?description ?slot
     {
-      BIND(mc:lantern AS ?item) .
+      BIND(mc:redstone_comparator AS ?item) .
       {
         ?item ?recipeType _:recipe2 .
         _:recipe2 rdf:li _:element2 .
