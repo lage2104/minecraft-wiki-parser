@@ -1,0 +1,35 @@
+#Variante1
+mc:acacia_button	mc:shapefulRecipe	[
+		rdf:type	rdf:Seq ;
+		mc:outputAmount	"1"^^xsd:positiveInteger ;
+		rdf:li
+		[
+			mc:receipeItem	mc:acacia_planks ;
+			mc:slot	"5"^^xsd:positiveInteger
+		]
+	] .
+
+#Variante2
+mc:acacia_button	mc:shapefulRecipe	[
+		rdf:type	rdf:Seq ;
+		rdf:li
+		[
+			mc:receipeItem	mc:acacia_planks ;
+			mc:slot	"5"^^xsd:positiveInteger
+		]
+	] ;
+    mc:recipeoutputAmount	"1"^^xsd:positiveInteger .
+
+#Variante3
+mc:acacia_button	mc:shapefulRecipe	[
+    mc:receipeList 
+    [
+		rdf:type	rdf:Seq ;
+		rdf:li
+		[
+			mc:receipeItem	mc:acacia_planks ;
+			mc:slot	"5"^^xsd:positiveInteger
+		]
+	] ;
+    mc:recipeoutputAmount	"1"^^xsd:positiveInteger ;
+    ].

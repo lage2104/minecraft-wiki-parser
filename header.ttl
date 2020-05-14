@@ -30,4 +30,4 @@ mc:CraftableItem    rdf:type            rdfs:Class ;
 mc:CollectableItem  rdf:type            rdfs:Class ;
                     rdfs:subClassOf     mc:Item .
 mc:realWorldObject  rdf:type            rdfs:Property ;
-                    rdf:domain          mc:Item .
+                    rdf:domain          mc:Item .   
