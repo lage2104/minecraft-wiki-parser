@@ -36,7 +36,7 @@ Die Property "realWorldObject" enthält eine Verlinkung zu einem Artikel in der 
 
 ## Hinweis:
 * Die Grundlegenden Informationen sowie die Rezepte der Items wurden mithilfe eines selbst entwickelten Parsers automatisch generiert. Daher gibt es eine hohe Anzahl an Tripeln. Der Parser ist im öffentlichen Github Repository https://github.com/lage2104/minecraft-wiki-parser einsehbar.
-* Der Parser verwendet die [Minecraft Wiki] (https://minecraft.gamepedia.com/Minecraft_Wiki).
+* Der Parser verwendet die [Minecraft Wiki](https://minecraft.gamepedia.com/Minecraft_Wiki).
 * Zusätzlich wurden für folgende Items die "Smelting Recipes" angegeben:
   * mc:iron_ingot
   * mc:gold_ingot
