@@ -53,6 +53,7 @@ Die Property "realWorldObject" enthält eine Verlinkung zu einem Artikel in der 
 
 
 # Anfragen
+Die Anfragen befinden sich im Verzeichnis "queries".
 
 ## Anfrage 1 - allItems
 Ermittelt alle verfügbaren Items innerhalb des Triple Stores
