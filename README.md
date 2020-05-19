@@ -1,6 +1,7 @@
 # Einleitung
 Die Domain "http://minecraft-item-resolver.mc" basiert auf den Rezepten und Gegenständen (Items, bzw. Blocks) aus dem Videospiel [Minecraft](https://www.minecraft.net/de-de/).
 Minecraft ist ein survival Spiel in welchem das Crafting, also das Herstellen von Gegenständen, mithilfe eines 3x3 Feldes, in das die Zutaten gelegt werden können, erfolgt.
+
 ![Craftingtable 3x3](images/Crafting3x3.png)
 
 
