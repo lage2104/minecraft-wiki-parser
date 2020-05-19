@@ -2,7 +2,7 @@
 @prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
-@prefix dbr: <http://dbpedia.org/resource/>
+@prefix dbr: <http://dbpedia.org/resource/> .
 
 mc:recipe           rdf:type            rdfs:Property ;
                     rdfs:domain         mc:CraftableItem .
@@ -12,6 +12,8 @@ mc:shapefulRecipe   rdf:type            rdfs:Property ;
                     rdfs:subPropertyOf  mc:recipe .
 mc:smeltingRecipe   rdf:type            rdfs:Property ;
                     rdfs:subPropertyOf  mc:recipe .
+mc:recipeList       rdf:type            rdfs:Property ;
+                    rdfs:domain         mc:recipe .
 mc:recipeItem       rdf:type            rdfs:Property ;
                     rdfs:range          mc:Item .
 mc:stackSize        rdf:type            rdfs:Property ;

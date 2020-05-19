@@ -21,13 +21,16 @@ SELECT * WHERE {
     {
       BIND(mc:redstone_comparator AS ?item) .
       {
+        ?recipeType rdfs:subPropertyOf mc:recipe . 
         ?item ?recipeType _:recipe2 .
-        _:recipe2 rdf:li _:element2 .
+        _:recipe2 mc:recipeList _:list .
+        _:list rdf:li _:element2 .
         _:element2 mc:receipeItem ?element .
+        _:element2 mc:slot ?slot .
         ?element rdf:label ?name .
         ?element mc:stackSize ?stackSize .
-        ?element rdf:comment ?description .
-        _:element2 mc:slot ?slot
+        ?element rdf:comment ?description 
+        
       }
     }
     ORDER BY ?slot

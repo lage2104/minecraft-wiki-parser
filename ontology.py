@@ -47,10 +47,11 @@ def generateOntology(fileName):
       else:
         shape = "mc:{id}\tmc:shapefulRecipe\t[".format(id=element['id'])
         element_triple.append(shape)
-      
-      element_triple.append("\t\trdf:type\trdf:Seq ;")
-      output_amount = "\t\tmc:outputAmount\t\"{}\"^^xsd:positiveInteger ;".format(element['receipe']['output_amount'])
-      element_triple.append(output_amount)
+      element_triple.append("\tmc:recipeList\t[")
+      element_triple.append("\t\trdf:type rdf:Seq ;")
+
+
+
       element_triple.append("\t\trdf:li")
       
       ingredients_txt = []
@@ -62,7 +63,11 @@ def generateOntology(fileName):
 
       element_triple.append(", \n".join(ingredients_txt))
         
-      element_triple.append("\t] .")
+      element_triple.append("\t] ; ")
+      
+      output_amount = "\tmc:outputAmount\t\"{}\"^^xsd:positiveInteger ;".format(element['receipe']['output_amount'])
+      element_triple.append(output_amount)
+      element_triple.append("] .")
 
     output.append(element_triple)
     
