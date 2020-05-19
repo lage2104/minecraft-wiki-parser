@@ -26,21 +26,22 @@ Es spielt bei Shapeless Recipes keine Rolle, wo sich ein Gegenstand im Crafting-
 In beiden Beispielen erhält der Spieler nur einen neuen Gegenstand, es gibt jedoch Rezepte, durch welche der Spieler mehr als einen Gegenstand erhält. Legt man beispielsweise einen Eisenbarren in den Crafting-Bereich, so erhält man 9 Eisennuggets. 
 Diese Ausgabemenge wird in der Domain als "outputAmount" angegeben. 
 
+### Minecraft-Wiki Parser:
+Die Grundlegenden Informationen sowie die Rezepte der Gegensände wurden mithilfe eines selbst entwickelten Parsers automatisch generiert. Daher gibt es eine hohe Anzahl an Tripeln. 
+Der Parser ist im öffentlichen Github Repository https://github.com/lage2104/minecraft-wiki-parser einsehbar.
+Als Quelle verwendet der Parser die [Minecraft Wiki](https://minecraft.gamepedia.com/Minecraft_Wiki). Informationen zur Einrichtung und Verwendung befinden sich am Ende des Dokuments.
+
+
+
 ### Weitere Herstellungsmöglichkeiten
 Der Wiki-Parser extrahiert lediglich die Rezepte für den 3x3 Crafting-Bereich. Es gibt jedoch noch etliche andere Wege bestimmte Gegenstände herzustellen. Eine möglichkeit ist das Einschmelzen von beispielsweise Eisenadern. 
 Hierfür gibt es einen Ofen, welcher nur einen Platz für ein Eingabegegenstand hat, dieser wird dann mithilfe von beispielsweise Kohle oder einem anderen brennbaren Stoff eingeschmolzen und man erhält Eisenbarren. 
-Dieser Prozess wird in der Domain auch dargestellt und wie jedes andere Rezept behandelt. Dabei wird die Unterklasse "smeltingRecipe" verwendet.
-
-### Bezug zu echten Gegenständen
-Die Property "realWorldObject" enthält eine Verlinkung zu einem Artikel in der DBPedia, der den realen Gegenstand darstellt. Auch diese Information kann der Wiki-Parser nicht extrahieren, jedoch wurde sie für einige Gegensände manuell ergänzt. 
-
-## Hinweis:
-* Die Grundlegenden Informationen sowie die Rezepte der Items wurden mithilfe eines selbst entwickelten Parsers automatisch generiert. Daher gibt es eine hohe Anzahl an Tripeln. Der Parser ist im öffentlichen Github Repository https://github.com/lage2104/minecraft-wiki-parser einsehbar.
-* Der Parser verwendet die [Minecraft Wiki](https://minecraft.gamepedia.com/Minecraft_Wiki).
-* Zusätzlich wurden für folgende Items die "Smelting Recipes" angegeben:
+Dieser Prozess wird in der Domain auch dargestellt und wie jedes andere Rezept behandelt. Dabei wird die Unterklasse "smeltingRecipe" verwendet. Das Smelting Recipe wurde für folgende Gegensände hinzugefügt:
   * mc:iron_ingot
   * mc:gold_ingot
-* Einzelne Items wurden mit DBPedia Elementen verknüpft. 
+
+### Bezug zu echten Gegenständen
+Die Property "realWorldObject" enthält eine Verlinkung zu einem Artikel in der DBPedia, der den realen Gegenstand darstellt. Auch diese Information kann der Wiki-Parser nicht extrahieren, jedoch wurde sie für foglende Gegensände manuell ergänzt:
   * mc:iron_ingot
   * mc:gold_ingot
   * mc:diamond
@@ -49,8 +50,7 @@ Die Property "realWorldObject" enthält eine Verlinkung zu einem Artikel in der 
   * mc:lapis_lazuli
   * mc:dirt
   * mc:map
-  * mc:minecart
-* Informationen zur Verwendung des Parses befinden sich am Ende des Dokuments.
+  * mc:minecart 
 
 
 # Anfragen
