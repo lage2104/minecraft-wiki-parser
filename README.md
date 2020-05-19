@@ -5,7 +5,7 @@ Minecraft ist ein survival Spiel in welchem das Crafting, also das Herstellen vo
 ![Craftingtable 3x3](images/Crafting3x3.png)
 
 Hierbei wird zwischen zwei Arten von Rezepten unterschieden. Es gibt die sogenannten "Shapeful Recipes" und "Shapeless Recipes". Der Unterschied zwischen den beiden Rezeptarten ist
-die anordnung der Gegenstände im Crafting-Bereich. Shapeful Recipes fordern eine bestimmte Anordnung der Gegenstände um einen neune Gegenstand herzustellen.
+die Anordnung der Gegenstände im Crafting-Bereich. Shapeful Recipes fordern eine bestimmte Anordnung der Gegenstände um einen neune Gegenstand herzustellen.
 Shapeless Recipes hingegen fordern keine bestimmte Anordnung.
 
 ### Beispiel Shapeful Recipes
@@ -30,7 +30,6 @@ Diese Ausgabemenge wird in der Domain als "outputAmount" angegeben.
 Die Grundlegenden Informationen sowie die Rezepte der Gegensände wurden mithilfe eines selbst entwickelten Parsers automatisch generiert. Daher gibt es eine hohe Anzahl an Tripeln. 
 Der Parser ist im öffentlichen Github Repository https://github.com/lage2104/minecraft-wiki-parser einsehbar.
 Als Quelle verwendet der Parser die [Minecraft Wiki](https://minecraft.gamepedia.com/Minecraft_Wiki). Informationen zur Einrichtung und Verwendung befinden sich am Ende des Dokuments.
-
 
 
 ### Weitere Herstellungsmöglichkeiten
