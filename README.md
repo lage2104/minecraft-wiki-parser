@@ -1,18 +1,18 @@
 # Einleitung
 Die Domain "http://minecraft-item-resolver.mc" basiert auf den Rezepten und Gegenständen (Items, bzw. Blocks) aus dem Videospiel [Minecraft](https://www.minecraft.net/de-de/).
-Minecraft ist ein survival Spiel in welchem das Crafting, also das Herstellen von Gegenständen, mithilfe eines 3x3 Feldes, in das die Zutaten gelegt werden können, erfolgt.
+Minecraft ist ein Survivalspiel in dem das Crafting, also das Herstellen von Gegenständen, mithilfe eines 3x3 Feldes, in das die Zutaten gelegt werden können, erfolgt.
 
 ![Craftingtable 3x3](images/Crafting3x3.png)
 
 Hierbei wird zwischen zwei Arten von Rezepten unterschieden. Es gibt die sogenannten "Shapeful Recipes" und "Shapeless Recipes". Der Unterschied zwischen den beiden Rezeptarten ist
-die Anordnung der Gegenstände im Crafting-Bereich. Shapeful Recipes fordern eine bestimmte Anordnung der Gegenstände um einen neune Gegenstand herzustellen.
+die Anordnung der Gegenstände im Crafting-Bereich. Shapeful Recipes fordern eine bestimmte Anordnung der Gegenstände um einen neuen Gegenstand herzustellen.
 Shapeless Recipes hingegen fordern keine bestimmte Anordnung.
 
 ### Beispiel Shapeful Recipes
 
 ![Bed](images/bed.jpg)
 
-Das Bild zeigt das Rezept zur Herstellung eines Bettes, für das 3x Holz und 3x Wolle benötigt werden. Die Wolle muss zwingendermaßen über den Holz plaziert werden,
+Das Bild zeigt das Rezept zur Herstellung eines Bettes, für das 3x Holz und 3x Wolle benötigt werden. Die Wolle muss zwingendermaßen über den Holz platziert werden,
 da das Rezept dies fordert.
 
 ### Beispiel Shapeless Recipes
@@ -23,7 +23,7 @@ Es gibt nur wenige Shapeless Recipes in Minecraft, eins davon ist "Pilzsuppe":
 Es spielt bei Shapeless Recipes keine Rolle, wo sich ein Gegenstand im Crafting-Bereich befinden. Das bedeutet, dass sowohl die Pilze als auch die Suppenschüssel in jedem Platz liegen könnten, das Ergebnis ist immer das gleiche.
 
 ### Ausgabemenge
-In beiden Beispielen erhält der Spieler nur einen neuen Gegenstand, es gibt jedoch Rezepte, durch welche der Spieler mehr als einen Gegenstand erhält. Legt man beispielsweise einen Eisenbarren in den Crafting-Bereich, so erhält man 9 Eisennuggets. 
+In beiden Beispielen erhält der Spieler nur einen neuen Gegenstand, es gibt jedoch Rezepte, durch die der Spieler mehr als einen Gegenstand erhält. Legt man beispielsweise einen Eisenbarren in den Crafting-Bereich, so erhält man 9 Eisennuggets. 
 Diese Ausgabemenge wird in der Domain als "outputAmount" angegeben. 
 
 ### Minecraft-Wiki Parser:
@@ -31,10 +31,9 @@ Die Grundlegenden Informationen sowie die Rezepte der Gegensände wurden mithilf
 Der Parser ist im öffentlichen Github Repository https://github.com/lage2104/minecraft-wiki-parser einsehbar.
 Als Quelle verwendet der Parser die [Minecraft Wiki](https://minecraft.gamepedia.com/Minecraft_Wiki). Informationen zur Einrichtung und Verwendung befinden sich am Ende des Dokuments.
 
-
 ### Weitere Herstellungsmöglichkeiten
 Der Wiki-Parser extrahiert lediglich die Rezepte für den 3x3 Crafting-Bereich. Es gibt jedoch noch etliche andere Wege bestimmte Gegenstände herzustellen. Eine möglichkeit ist das Einschmelzen von beispielsweise Eisenadern. 
-Hierfür gibt es einen Ofen, welcher nur einen Platz für ein Eingabegegenstand hat, dieser wird dann mithilfe von beispielsweise Kohle oder einem anderen brennbaren Stoff eingeschmolzen und man erhält Eisenbarren. 
+Hierfür gibt es einen Ofen, der nur einen Platz für ein Eingabegegenstand hat, dieser wird dann mithilfe von beispielsweise Kohle oder einem anderen brennbaren Stoff eingeschmolzen und man erhält Eisenbarren. 
 Dieser Prozess wird in der Domain auch dargestellt und wie jedes andere Rezept behandelt. Dabei wird die Unterklasse "smeltingRecipe" verwendet. Das Smelting Recipe wurde für folgende Gegensände hinzugefügt:
   * mc:iron_ingot
   * mc:gold_ingot
