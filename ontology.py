@@ -56,7 +56,7 @@ def generateOntology(fileName):
       
       ingredients_txt = []
       for ingredient in element['receipe']['ingredients']:
-        ingredient_item = "\t\t\tmc:receipeItem\tmc:{} ;".format(ingredient['item'])
+        ingredient_item = "\t\t\tmc:recipeItem\tmc:{} ;".format(ingredient['item'])
         slot = "\t\t\tmc:slot\t\"{}\"^^xsd:positiveInteger".format(ingredient['slot'])
         
         ingredients_txt.append("\n".join(["\t\t[",ingredient_item, slot, "\t\t]"]))

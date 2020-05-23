@@ -15,7 +15,7 @@ WHERE {
   _:recipe mc:outputAmount ?outputAmount .
   _:list rdf:li _:element .
   _:element mc:slot ?slot .
-  _:element mc:receipeItem ?element .
+  _:element mc:recipeItem ?element .
   ?element rdf:label ?ingredient .
   ?element rdf:comment ?ingredientDescription
 }

@@ -5,5 +5,5 @@ PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 SELECT DISTINCT ?craftable
 WHERE {
   BIND(mc:oak_log AS ?item) .
-  ?craftable ((mc:shapelessRecipe | mc:shapefulRecipe | mc:smeltingRecipe)/mc:recipeList/rdf:li/mc:receipeItem) ?item .
+  ?craftable ((mc:shapelessRecipe | mc:shapefulRecipe | mc:smeltingRecipe)/mc:recipeList/rdf:li/mc:recipeItem) ?item .
 }

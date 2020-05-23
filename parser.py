@@ -107,6 +107,19 @@ def main():
   logger.info("Start to parse {} blocks".format(blockslen))
   # Here everything happens
   start = time.time()
+
+  #read ignore file
+  # define an empty list
+  ignore_items = []
+
+  # open file and read the content in a list
+  with open('ignoreRecipes.txt', 'r') as filehandle:
+      for line in filehandle:
+          # remove linebreak which is the last character of the string
+          current_item = line[:-1]
+
+          # add item to the list
+          ignore_items.append(current_item)
   
   for idx,block in enumerate(blocks):
     if idx % 20 == 0:
@@ -116,8 +129,10 @@ def main():
     # parseInfoBox appends information to the block_data dict.
     block = infopage.parseInfoBox(block)
     block = infopage.parseItemDescription(block)
-
-    receipe = infopage.parseReceipe(block)
+    receipe = None
+    if block['id'] not in ignore_items:
+      receipe = infopage.parseReceipe(block)
+      
     block['receipe'] = receipe
     if 'html' in block:
       block.pop('html')
@@ -134,8 +149,10 @@ def main():
       logger.info("Elapsed time: {} seconds".format(round(end-start,2)))
     item = infopage.parseInfoBox(item)
     item = infopage.parseItemDescription(item)
-
-    receipe = infopage.parseReceipe(item)
+    receipe = None
+    if item['id'] not in ignore_items:
+      receipe = infopage.parseReceipe(item)
+      
     item['receipe'] = receipe
     if 'html' in item:
       item.pop('html')
