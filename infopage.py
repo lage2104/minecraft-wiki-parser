@@ -26,8 +26,13 @@ def parseInfoBox(data):
 def parseItemDescription(data):
   strainer = SoupStrainer("div", {"class": "mw-parser-output"})
   soup = BeautifulSoup(data['html'],'lxml',parse_only=strainer)
-  desc = soup.find("div", {"class": "mw-parser-output"}).find("p", recursive=False).getText().strip()
-  data["description"] = desc.replace("\n", " ").replace("\"", "").encode('ascii', 'ignore').decode("utf-8")
+  desc = soup.find("div", {"class": "mw-parser-output"}).find("p", recursive=False)
+  if(desc):
+    desc = desc.getText().strip()
+    data["description"] = desc.replace("\n", " ").replace("\"", "").encode('ascii', 'ignore').decode("utf-8")
+  else:
+    data["description"] = ""
+
   return data
 
 def parse_shape(soup):
